@@ -14,6 +14,9 @@ services:
       - DB_NAME=local_db
     depends_on:
       - postgres
+    #volumes:
+    #  - ./src:/usr/src/app/src
+    #  - nodemodules:/usr/src/app/node_modules
   reservation-frontend:
     build:
       context: ../reservation-frontend #TODO move it into this folder (currently depends on external folder structure)
@@ -31,3 +34,4 @@ services:
       - 5432:5432
 volumes:
   db_data:
+  #nodemodules:
