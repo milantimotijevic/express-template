@@ -23,6 +23,8 @@ services:
     image: milantimotijevic89/reservation-frontend:latest
     ports:
       - 3001:3001
+    environment:
+      - API_HOST=express-template
   postgres:
     image: postgres
     environment:
