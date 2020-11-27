@@ -24,7 +24,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - API_HOST=express-template
+      - API_HOST=http://express-template:3000
   postgres:
     image: postgres
     environment:
