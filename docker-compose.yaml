@@ -3,7 +3,7 @@ services:
   express-template:
     build:
       context: .
-    image: milantimotijevic89/express-template:0.8
+    image: milantimotijevic89/express-template:latest
     ports:
       - 3000:3000
     environment:
@@ -20,7 +20,7 @@ services:
   reservation-frontend:
     build:
       context: ../reservation-frontend #TODO move it into this folder (currently depends on external folder structure)
-    image: milantimotijevic89/reservation-frontend:0.8
+    image: milantimotijevic89/reservation-frontend:latest
     ports:
       - 3001:3001
   postgres:
