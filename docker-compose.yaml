@@ -24,7 +24,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - API_HOST=http://host.docker.internal:3000
+      - API_HOST=express-template:3000
   postgres:
     image: postgres
     environment:
