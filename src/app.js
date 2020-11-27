@@ -5,11 +5,6 @@ const isDevEnv = process.env.NODE_ENV === 'development';
 class App {
   constructor({ middlewares, controllers, errorHandler }) {
     this.instance = express();
-    this.instance.use(function(req, res, next) {
-    	res.header("Access-Control-Allow-Origin", "*");
-		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-		next();
-    });
     this.useMiddlewares(middlewares);
     this.useControllers(controllers);
     this.useMiddlewares(errorHandler);
