@@ -23,9 +23,8 @@ services:
     image: milantimotijevic89/reservation-frontend:latest
     ports:
       - 3001:3001
-    #environment:
-      #- API_HOST=http://95.217.234.63:3000 #TODO find a way to dynamically assign this
-      #export API_HOST=http://"$(hostname -I | cut -f1 -d' ')":3000
+    environment:
+      - API_HOST=${API_HOST}
   postgres:
     image: postgres
     environment:
