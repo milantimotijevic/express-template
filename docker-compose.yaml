@@ -24,7 +24,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - API_HOST=${API_HOST} # it reads system environment variable and sets it as env var of the container
+      - API_HOST=http://localhost:3000
   postgres:
     image: postgres
     environment:
