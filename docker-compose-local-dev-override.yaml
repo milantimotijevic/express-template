@@ -1,0 +1,17 @@
+version: "3"
+services:
+  express-template:
+    command: npm run dev
+    volumes:
+      - ./src:/usr/src/app/src
+      - node_modules_api:/usr/src/app/node_modules
+  reservation-frontend:
+    command: npm run dev
+    volumes:
+      - ./src:/usr/src/app/src
+      - node_modules_web:/usr/src/app/node_modules
+    environment:
+      - API_HOST=http://localhost:3000
+volumes:
+  node_modules_api:
+  node_modules_web:
