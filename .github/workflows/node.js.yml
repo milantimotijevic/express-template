@@ -26,3 +26,9 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Pull Image and Rebuild Container Through SSH
+      uses: fifsky/ssh-action@master
+      with:
+        command: docker-compose pull && docker-compose up -d
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.PRIVATE_KEY }}
