@@ -1,6 +1,7 @@
 const getAllReservations = require('../../../../../src/domain/use_cases/queries/reservation/getAllReservations');
 const ReservationRepository = require('../../../../../src/repository/ReservationRepository');
 
+jest.mock('sequelize');
 jest.mock('../../../../../src/repository/ReservationRepository');
 
 describe('getAllReservations tests', () => {
