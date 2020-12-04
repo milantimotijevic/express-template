@@ -21,11 +21,11 @@ jobs:
     - run: npm test
     - name: Build and Push Docker Image
       uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: milantimotijevic89/express-template
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest"
+      with:
+        name: milantimotijevic89/express-template
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: "latest"
     - name: Pull Latest Image From Server (SSH)
       uses: garygrossgarten/github-action-ssh@release
       with:
