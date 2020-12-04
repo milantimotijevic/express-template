@@ -49,7 +49,7 @@ module.exports = class ReservationController extends BaseController {
     try {
       const result = await getAllReservations();
 
-      return res.json(result);
+      return res.json({ok: 'yes, sure'});
     } catch (error) {
       console.log(error)
       return next(error);
