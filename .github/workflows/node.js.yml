@@ -26,10 +26,3 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Pull Latest Image From Server (SSH)
-      uses: garygrossgarten/github-action-ssh@release
-      with:
-        command: docker-compose pull
-        host: ${{ secrets.HOST }}
-        username: root
-        privateKey: ${{ secrets.PRIVATE_KEY}}
