@@ -6,6 +6,10 @@ const getOneUser = function(id) {
 	return models.User.findByPk(id);
 };
 
+const findUser = function(params) {
+	return models.user.findOne({ where: params });
+}
+
 const getAllUsers = function() {
 	return models.User.findAll();
 };
@@ -34,6 +38,7 @@ const deleteUser = function(id) {
 
 module.exports = {
 	getOneUser,
+	findUser,
 	getAllUsers,
 	createUser,
 	updateUser,

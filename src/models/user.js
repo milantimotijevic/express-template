@@ -4,9 +4,14 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.UUID,
 			primaryKey: true,
 		},
-		firstName: Sequelize.DATE,
-		lastName: Sequelize.DATE,
-
+		firstName: Sequelize.STRING,
+		lastName: Sequelize.STRING,
+		email: {
+			type: Sequelize.STRING,
+			unique: true,
+		},
+		salt: Sequelize.STRING,
+		password: Sequelize.STRING,
 	}, {
 		timestamps: false,
 		tableName: 'users',
