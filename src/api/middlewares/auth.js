@@ -16,8 +16,6 @@ module.exports = (roles) => {
 			throw Boom.unauthorized('Bad login info');
 		}
 
-		console.log(roles)
-		console.log(tokenData)
 		if (roles && !roles.includes(tokenData.role)) {
 			throw Boom.unauthorized('You may not access this resource');
 		}
