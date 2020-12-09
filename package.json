@@ -21,6 +21,7 @@
     "express-joi-validation": "^4.0.3",
     "express-oas-generator": "^1.0.23",
     "helmet": "^3.22.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.4.2",
     "sequelize": "^6.3.5",

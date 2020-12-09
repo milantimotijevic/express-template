@@ -7,7 +7,7 @@ const getOneUser = function(id) {
 };
 
 const findUser = function(params) {
-	return models.user.findOne({ where: params });
+	return models.User.findOne({ where: params });
 }
 
 const getAllUsers = function() {
