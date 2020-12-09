@@ -12,6 +12,7 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		salt: Sequelize.STRING,
 		password: Sequelize.STRING,
+		role: Sequelize.STRING,
 	}, {
 		timestamps: false,
 		tableName: 'users',

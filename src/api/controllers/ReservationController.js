@@ -5,6 +5,7 @@ const getOneReservation = require('../../domain/use_cases/queries/reservation/ge
 const createReservation = require('../../domain/use_cases/commands/reservation/createReservation');
 const updateReservation = require('../../domain/use_cases/commands/reservation/updateReservation');
 const deleteReservation = require('../../domain/use_cases/commands/reservation/deleteReservation');
+const auth = require('../middlewares/auth');
 
 const validator = createValidator({});
 
@@ -16,6 +17,7 @@ module.exports = class ReservationController extends BaseController {
   initRoutes(validations) {
     this.router.get(
       '/reservation',
+      auth(['admin']),
       this.getAllReservations,
     );
 

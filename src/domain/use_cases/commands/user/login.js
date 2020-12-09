@@ -22,6 +22,7 @@ module.exports = async function login(userParam){
 		email: user.email,
 		firstName: user.firstName,
 		lastName: user.lastName,
+		role: user.role,
 	}, process.env.SECRET, { expiresIn: '10m' });
 
 	return {
