@@ -3,8 +3,7 @@
   "version": "0.2.0",
   "description": "Express template",
   "scripts": {
-    "debug": "NODE_ENV=development nodemon --inspect src/index.js",
-    "dev": "NODE_ENV=development nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "test": "jest"
   },

@@ -1,6 +1,5 @@
 const express = require('express');
 const expressOasGenerator = require('express-oas-generator');
-const isDevEnv = process.env.NODE_ENV === 'development';
 
 class App {
   constructor({ middlewares, controllers, errorHandler }) {
@@ -8,7 +7,7 @@ class App {
     this.useMiddlewares(middlewares);
     this.useControllers(controllers);
     this.useMiddlewares(errorHandler);
-    if (isDevEnv) expressOasGenerator.init(this.instance, {});
+    expressOasGenerator.init(this.instance, {});
   }
 
   useMiddlewares(middlewares) {
