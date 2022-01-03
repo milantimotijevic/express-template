@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
 const reservationIdParam = Joi.object({
   id: Joi.string().guid().required(),
