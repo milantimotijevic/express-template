@@ -2,16 +2,16 @@ const express = require('express');
 const expressOasGenerator = require('express-oas-generator');
 
 class App {
-  constructor({ middlewares, controllers, errorHandler }) {
+  constructor({ middleware, controllers, errorHandler }) {
     this.instance = express();
-    this.useMiddlewares(middlewares);
+    this.useMiddleware(middleware);
     this.useControllers(controllers);
-    this.useMiddlewares(errorHandler);
+    this.useMiddleware(errorHandler);
     expressOasGenerator.init(this.instance, {});
   }
 
-  useMiddlewares(middlewares) {
-    this.instance.use(middlewares);
+  useMiddleware(middleware) {
+    this.instance.use(middleware);
   }
 
   useControllers(controllers) {

@@ -6,9 +6,9 @@ const morgan = require('morgan');
 const errorHandler = require('./errorHandler');
 
 const isProdEnv = process.env.NODE_ENV === 'production';
-const prodMiddlewares = [compression(), helmet()];
-const middlewares = [
-  ...(isProdEnv ? prodMiddlewares : []),
+const prodMiddleware = [compression(), helmet()];
+const middleware = [
+  ...(isProdEnv ? prodMiddleware : []),
   bodyParser.json(),
   bodyParser.urlencoded({ extended: true }),
   cors(),
@@ -16,6 +16,6 @@ const middlewares = [
 ];
 
 module.exports = {
-  middlewares,
+  middleware,
   errorHandler,
 };
