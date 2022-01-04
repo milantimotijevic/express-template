@@ -1,11 +1,6 @@
 const {createValidator} = require('express-joi-validation');
 const BaseController = require('./BaseController');
-const getAllUsers = require('../../domain/use_cases/queries/user/getAllUsers');
-const getOneUser = require('../../domain/use_cases/queries/user/getOneUser');
-const register = require('../../domain/use_cases/commands/user/register');
-const login = require('../../domain/use_cases/commands/user/login');
-const updateUser = require('../../domain/use_cases/commands/user/updateUser');
-const deleteUser = require('../../domain/use_cases/commands/user/deleteUser');
+const { UserService } = require('../..//service');
 
 const validator = createValidator({});
 
@@ -54,7 +49,7 @@ module.exports = class UserController extends BaseController {
 
 	async getAllUsers(req, res, next) {
 		try {
-			const result = await getAllUsers();
+			const result = await UserService.getAllUsers();
 
 			return res.json(result);
 		} catch (error) {
@@ -66,7 +61,7 @@ module.exports = class UserController extends BaseController {
 	async getOneUser(req, res, next) {
 		try {
 			const {id} = req.params;
-			const result = await getOneUser(id);
+			const result = await UserService.getOneUser(id);
 
 			return res.json(result);
 		} catch (error) {
@@ -77,7 +72,7 @@ module.exports = class UserController extends BaseController {
 
 	async register(req, res, next) {
 		try {
-			const result = await register(req.body);
+			const result = await UserService.register(req.body);
 
 			return res.json(result);
 		} catch (error) {
@@ -88,7 +83,7 @@ module.exports = class UserController extends BaseController {
 
 	async login(req, res, next) {
 		try {
-			const result = await login(req.body);
+			const result = await UserService.login(req.body);
 
 			return res.json(result);
 		} catch (error) {
@@ -100,7 +95,7 @@ module.exports = class UserController extends BaseController {
 	async updateUser(req, res, next) {
 		try {
 			const {id} = req.params;
-			const result = await updateUser(id, req.body);
+			const result = await UserService.updateUser(id, req.body);
 
 			return res.json(result);
 		} catch (error) {
@@ -112,7 +107,7 @@ module.exports = class UserController extends BaseController {
 	async deleteUser(req, res, next) {
 		try {
 			const {id} = req.params;
-			const result = await deleteUser(id);
+			const result = await UserService.deleteUser(id);
 
 			return res.json(result);
 		} catch (error) {

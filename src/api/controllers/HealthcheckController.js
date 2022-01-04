@@ -1,6 +1,6 @@
 const { createValidator } = require('express-joi-validation');
 const BaseController = require('./BaseController');
-const getHealthcheck = require('../../domain/use_cases/queries/health/getHealthCheck');
+const { HealthCheckService } = require('../../service')
 
 const validator = createValidator({});
 
@@ -19,7 +19,7 @@ module.exports = class HealthcheckController extends BaseController {
 
   async getHealthcheck(req, res, next) {
     try {
-      const healthcheck = await getHealthcheck();
+      const healthcheck = await HealthCheckService.getHealthcheck();
 
       return res.json(healthcheck);
     } catch (error) {

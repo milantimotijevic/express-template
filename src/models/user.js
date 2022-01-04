@@ -1,5 +1,5 @@
-module.exports = (sequelize, Sequelize) => {
-	const model = sequelize.define('User', {
+module.exports = (connection, Sequelize) => {
+	const model = connection.define('User', {
 		id: {
 			type: Sequelize.UUID,
 			primaryKey: true,

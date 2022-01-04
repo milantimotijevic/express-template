@@ -1,10 +1,6 @@
 const { createValidator } = require('express-joi-validation');
 const BaseController = require('./BaseController');
-const getAllReservations = require('../../domain/use_cases/queries/reservation/getAllReservations');
-const getOneReservation = require('../../domain/use_cases/queries/reservation/getOneReservation');
-const createReservation = require('../../domain/use_cases/commands/reservation/createReservation');
-const updateReservation = require('../../domain/use_cases/commands/reservation/updateReservation');
-const deleteReservation = require('../../domain/use_cases/commands/reservation/deleteReservation');
+const { ReservationService } = require('../../service');
 const auth = require('../middleware/auth');
 
 const validator = createValidator({});
@@ -49,7 +45,7 @@ module.exports = class ReservationController extends BaseController {
 
   async getAllReservations(req, res, next) {
     try {
-      const result = await getAllReservations();
+      const result = await ReservationService.getAllReservations();
 
       return res.json(result);
     } catch (error) {
@@ -61,7 +57,7 @@ module.exports = class ReservationController extends BaseController {
   async getOneReservation(req, res, next) {
     try {
       const { id } = req.params;
-      const result = await getOneReservation(id);
+      const result = await ReservationService.getOneReservation(id);
 
       return res.json(result);
     } catch (error) {
@@ -72,7 +68,7 @@ module.exports = class ReservationController extends BaseController {
 
   async createReservation(req, res, next) {
     try {
-      const result = await createReservation(req.body);
+      const result = await ReservationService.createReservation(req.body);
 
       return res.json(result);
     } catch (error) {
@@ -84,7 +80,7 @@ module.exports = class ReservationController extends BaseController {
   async updateReservation(req, res, next) {
     try {
       const { id } = req.params;
-      const result = await updateReservation(id, req.body);
+      const result = await ReservationService.updateReservation(id, req.body);
 
       return res.json(result);
     } catch (error) {
@@ -96,7 +92,7 @@ module.exports = class ReservationController extends BaseController {
   async deleteReservation(req, res, next) {
     try {
       const { id } = req.params;
-      const result = await deleteReservation(id);
+      const result = await ReservationService.deleteReservation(id);
 
       return res.json(result);
     } catch (error) {
