@@ -28,7 +28,7 @@ const login = async(userParam) => {
 	if (user.password !== encrypted) {
 		throw Boom.unauthorized('Incorrect email or password');
 	}
-    console.log(user)
+
 	const token = jwt.sign({
 		id: user.id,
 		email: user.email,
@@ -64,7 +64,9 @@ const register = async(userParam) => {
 	}
 };
 
-const updateUser = async() => {};
+const updateUser = async(id, userParam) => {
+    return UserRepository.updateUser(id, userParam);
+};
 
 module.exports = {
     getAllUsers,
