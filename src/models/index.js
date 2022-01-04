@@ -21,20 +21,33 @@ module.exports = connection.models;
 */
 
 // PLACEHOLDER STUFF BELOW
-const jwt = require('jsonwebtoken');
+
 module.exports = {
   User: {
     findByPk: async () => {
       return { id: 'some-id', name: 'placeholder-findByPk' };
     },
     findOne: async () => {
-      return { id: 'some-id', name: 'placeholder-findOne' };
+      return {
+        id: 'da3d51cd-0416-49e7-b20e-e5c9f37d58e2',
+        password: 'b695e85bcbb20bbad4491494d486873be46a3e74e7754ca428667294b287e973f10335e0f67fd573f087be3e933882f81cf8',
+        email: 'john@doe.com',
+        firstName: 'john',
+        lastName: 'doe',
+        role: 'admin',
+        salt: '66863605b95dccfc7359be83d927cb65ea72069a370b000a43e804d72d8b3baf'
+      };
     },
     findAll: async () => {
       return [{ id: 'some-id', name: 'placeholder-findAll' }];
     },
     create: async () => {
-      return { id: 'some-id', name: 'placeholder-create' };
+      return { 
+        firstName:'john',
+		    lastName: 'doe',
+		    email: 'john@doe.com',
+		    role: 'admin',
+       };
     },
     update: async () => {
       return [1, [{
@@ -53,7 +66,7 @@ module.exports = {
         firstName: 'john',
         lastName: 'doe',
         role: 'admin',
-      }, 'somesecret', { expiresIn: '10m' });
+      }, process.env.SECRET, { expiresIn: '10m' });
 
       return {
         token,

@@ -19,7 +19,7 @@ module.exports = class HealthcheckController extends BaseController {
 
   async getHealthcheck(req, res, next) {
     try {
-      const healthcheck = await HealthCheckService.getHealthcheck();
+      const healthcheck = await HealthCheckService.getHealthCheck();
 
       return res.json(healthcheck);
     } catch (error) {
