@@ -1,5 +1,6 @@
 const express = require('express');
 const expressOasGenerator = require('express-oas-generator');
+const isNonProd = process.env.NODE_ENV !== 'production';
 
 class App {
   constructor({ middleware, controllers, errorHandler }) {
@@ -7,7 +8,7 @@ class App {
     this.useMiddleware(middleware);
     this.useControllers(controllers);
     this.useMiddleware(errorHandler);
-    expressOasGenerator.init(this.instance, {});
+    if (isNonProd) expressOasGenerator.init(this.instance, {});
   }
 
   useMiddleware(middleware) {
