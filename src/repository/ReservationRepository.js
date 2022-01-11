@@ -1,35 +1,34 @@
 const uuid = require('uuid');
-const models = require('../models');
 const Boom = require('@hapi/boom');
 
+const { createClient } = require('redis');
+const { REDIS_PORT, REDIS_HOST } = process.env;
+
+let client;
+(async () => {
+  client = createClient(REDIS_PORT, REDIS_HOST);
+
+  client.on('error', (err) => console.log('Redis Client Error', err));
+})();
+
 const getOneReservation = function(id) {
-	return models.Reservation.findByPk(id);
+	return {};
 };
 
 const getAllReservations = function() {
-	return models.Reservation.findAll();
+	return [];
 };
 
 const createReservation = function(reservationParam) {
-	return models.Reservation.create({
-    id: uuid.v4(),
-    ...reservationParam,
-  });
+	return {};
 };
 
 const updateReservation = async function(id, reservation) {
-  const { id: currentId, ...params } = reservation;
-  const result = await models.Reservation.update(params, { where: { id }, returning: true });
-
-  if (!result[0]) {
-    throw Boom.notFound('Reservation not found');
-  }
-
-  return result[1][0];
+  return {};
 };
 
 const deleteReservation = function(id) {
-  return models.Reservation.destroy({ where : { id } });
+  return {};
 };
 
 module.exports = {

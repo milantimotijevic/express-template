@@ -2,7 +2,6 @@ require('dotenv/config');
 const App = require('./app');
 const controllers = require('./api/controllers');
 const { middleware, errorHandler } = require('./api/middleware');
-require('../src/models');
 
 const PORT = process.env.PORT || 3000;
 const app = new App({

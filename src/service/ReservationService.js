@@ -1,23 +1,23 @@
-const models = require('../models');
+const { ReservationRepository } = require('../repository');
 
 const getAllReservations = async() => {
-    return models.Reservation.findAll();
+    return ReservationRepository.getAllReservations();
 };
 
 const getOneReservation = async(id) => {
-    return models.Reservation.findByPk(id);
+    return ReservationRepository.getOneReservation(id);
 };
 
 const createReservation = async(reservation) => {
-    return models.Reservation.create(reservation);
+    return ReservationRepository.createReservation(reservation);
 };
 
 const deleteReservation = async(id) => {
-    return models.Reservation.destroy(id);
+    return ReservationRepository.deleteReservation(id);
 };
 
 const updateReservation = async(id, reservation) => {
-    return models.Reservation.update(id, reservation);
+    return ReservationRepository.updateReservation(id, reservation);
 };
 
 module.exports = {

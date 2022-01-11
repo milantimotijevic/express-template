@@ -1,7 +1,6 @@
 const { createValidator } = require('express-joi-validation');
 const BaseController = require('./BaseController');
 const { ReservationService } = require('../../service');
-const auth = require('../middleware/auth');
 
 const validator = createValidator({});
 
@@ -13,7 +12,6 @@ module.exports = class ReservationController extends BaseController {
   initRoutes(validations) {
     this.router.get(
       '/reservation',
-      auth(['admin']),
       this.getAllReservations,
     );
 
