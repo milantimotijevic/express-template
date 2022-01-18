@@ -2,11 +2,13 @@ const uuid = require('uuid');
 const Boom = require('@hapi/boom');
 
 const { createClient } = require('redis');
-const { REDIS_PORT, REDIS_HOST } = process.env;
+const { REDIS_URL } = process.env;
 
 let client;
 (async () => {
-  client = createClient(REDIS_PORT, REDIS_HOST);
+  client = createClient({
+	  url: REDIS_URL
+  });
   client.on('error', (err) => console.log('Redis Client Error', err));
   await client.connect();
 })();
