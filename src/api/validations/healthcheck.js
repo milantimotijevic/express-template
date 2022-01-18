@@ -1,3 +1,4 @@
+/*
 const Joi = require('joi');
 
 const healthcheckQuery = Joi.object({
@@ -7,3 +8,4 @@ const healthcheckQuery = Joi.object({
 module.exports = {
   healthcheckQuery,
 };
+*/
