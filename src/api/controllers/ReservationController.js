@@ -17,26 +17,26 @@ module.exports = class ReservationController extends BaseController {
 
     this.router.get(
       '/reservation/:id',
-      validator.params(validations.reservationIdParam),
+     // validator.params(validations.reservationIdParam),
       this.getOneReservation,
     );
 
     this.router.post(
       '/reservation',
-      validator.body(validations.createReservationSchema),
+     // validator.body(validations.createReservationSchema),
       this.createReservation,
     );
 
     this.router.put(
       '/reservation/:id',
-      validator.params(validations.reservationIdParam),
-      validator.body(validations.updateReservationSchema),
+     // validator.params(validations.reservationIdParam),
+     // validator.body(validations.updateReservationSchema),
       this.updateReservation,
     );
 
     this.router.delete(
       '/reservation/:id',
-      validator.params(validations.reservationIdParam),
+     // validator.params(validations.reservationIdParam),
       this.deleteReservation,
     );
   }

@@ -7,12 +7,12 @@ const reservationValidations = require('../validations/reservation');
 
 module.exports = [
   new HealthcheckController({
-    validations: healthcheckValidations,
+   // validations: healthcheckValidations,
   }),
   new StaticController({
     staticPath: path.join(__dirname, '../../../static'),
   }),
   new ReservationController({
-    validations: reservationValidations,
+   // validations: reservationValidations,
   }),
 ];

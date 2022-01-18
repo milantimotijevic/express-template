@@ -12,7 +12,7 @@ module.exports = class HealthcheckController extends BaseController {
   initRoutes(validations) {
     this.router.get(
       '/health',
-      validator.query(validations.healthcheckQuery),
+      //validator.query(validations.healthcheckQuery),
       this.getHealthcheck,
     );
   }
