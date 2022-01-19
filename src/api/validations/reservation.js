@@ -1,4 +1,3 @@
-/*
 const Joi = require('joi');
 
 const reservationIdParam = Joi.object({
@@ -21,4 +20,3 @@ module.exports = {
   createReservationSchema,
   updateReservationSchema,
 };
-*/
