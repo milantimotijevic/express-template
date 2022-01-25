@@ -4,7 +4,26 @@ const Boom = require('@hapi/boom');
 const Redis = require('ioredis');
 const { REDIS_URL } = process.env;
 
-const client = new Redis(`rediss://${REDIS_URL}`);
+// the second 's' stands for 'initiate TLS mode'
+// const client = new Redis(`rediss://${REDIS_URL}`);
+
+const nodes = [{
+    host: REDIS_URL,
+    port: '6379',
+}];
+
+const options = {
+    redisOptions: {
+        tls: {
+            checkServerIdentity: (servername, cert) => {
+                // skip certificate hostname validation
+                return undefined;
+            },
+        }
+    }
+}
+
+const client = new Redis.Cluster(nodes, options);
 
 const getOneReservation = function(id) {
 	return client.hget('reservations', id);
