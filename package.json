@@ -19,6 +19,7 @@
     "express-joi-validation": "^5.0.1",
     "express-oas-generator": "^1.0.41",
     "helmet": "^5.0.1",
+    "ioredis": "^4.28.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "redis": "^4.0.2",

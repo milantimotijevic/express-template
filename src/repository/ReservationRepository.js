@@ -1,36 +1,29 @@
 const uuid = require('uuid');
 const Boom = require('@hapi/boom');
 
-const { createClient } = require('redis');
+const Redis = require('ioredis');
 const { REDIS_URL } = process.env;
 
-let client;
-(async () => {
-  client = createClient({
-	  url: REDIS_URL
-  });
-  client.on('error', (err) => console.log('Redis Client Error', err));
-  await client.connect();
-})();
+const client = new Redis(`rediss://${REDIS_URL}`);
 
 const getOneReservation = function(id) {
-	return client.hGet('reservations', id);
+	return client.hget('reservations', id);
 };
 
 const getAllReservations = function() {
-	return client.hGetAll('reservations');
+	return client.hgetall('reservations');
 };
 
 const createReservation = function(reservationParam) {
-	return client.hSet('reservations', uuid.v4(), JSON.stringify(reservationParam));
+	return client.hset('reservations', uuid.v4(), JSON.stringify(reservationParam));
 };
 
 const updateReservation = async function(id, reservation) {
-  	return client.hSet('reservations', id, JSON.stringify(reservation));
+  	return client.hset('reservations', id, JSON.stringify(reservation));
 };
 
 const deleteReservation = function(id) {
-  return client.hDel('reservations', id);
+  return client.hdel('reservations', id);
 };
 
 module.exports = {
