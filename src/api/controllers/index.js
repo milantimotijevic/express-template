@@ -6,13 +6,13 @@ const healthcheckValidations = require('../validations/healthcheck');
 const reservationValidations = require('../validations/reservation');
 
 module.exports = [
-  new HealthcheckController({
-    validations: healthcheckValidations,
-  }),
-  new StaticController({
-    staticPath: path.join(__dirname, '../../../static'),
-  }),
-  new ReservationController({
-    validations: reservationValidations,
-  }),
+	new HealthcheckController({
+		validations: healthcheckValidations,
+	}),
+	new StaticController({
+		staticPath: path.join(__dirname, '../../../static'),
+	}),
+	new ReservationController({
+		validations: reservationValidations,
+	}),
 ];

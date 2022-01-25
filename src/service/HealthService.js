@@ -1,11 +1,9 @@
-
-const getHealthCheck = async function() {
-    return {
-      server: 'up',
-    };
+const getHealthCheck = async function () {
+	return {
+		server: 'up',
+	};
 };
 
 module.exports = {
-    getHealthCheck,
+	getHealthCheck,
 };
-  

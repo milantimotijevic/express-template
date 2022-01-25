@@ -1,29 +1,19 @@
 const { ReservationRepository } = require('../repository');
 
-const getAllReservations = async() => {
-    return ReservationRepository.getAllReservations();
-};
+const getAllReservations = async () => ReservationRepository.getAllReservations();
 
-const getOneReservation = async(id) => {
-    return ReservationRepository.getOneReservation(id);
-};
+const getOneReservation = async (id) => ReservationRepository.getOneReservation(id);
 
-const createReservation = async(reservation) => {
-    return ReservationRepository.createReservation(reservation);
-};
+const createReservation = async (reservation) => ReservationRepository.createReservation(reservation);
 
-const deleteReservation = async(id) => {
-    return ReservationRepository.deleteReservation(id);
-};
+const deleteReservation = async (id) => ReservationRepository.deleteReservation(id);
 
-const updateReservation = async(id, reservation) => {
-    return ReservationRepository.updateReservation(id, reservation);
-};
+const updateReservation = async (id, reservation) => ReservationRepository.updateReservation(id, reservation);
 
 module.exports = {
-    getAllReservations,
-    getOneReservation,
-    createReservation,
-    deleteReservation,
-    updateReservation
+	getAllReservations,
+	getOneReservation,
+	createReservation,
+	deleteReservation,
+	updateReservation,
 };

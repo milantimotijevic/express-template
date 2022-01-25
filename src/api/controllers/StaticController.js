@@ -3,11 +3,11 @@ const express = require('express');
 const BaseController = require('./BaseController');
 
 module.exports = class StaticController extends BaseController {
-  constructor({ staticPath }) {
-    super(staticPath);
-  }
+	constructor({ staticPath }) {
+		super(staticPath);
+	}
 
-  initRoutes(staticPath) {
-    this.use(express.static(staticPath));
-  }
+	initRoutes(staticPath) {
+		this.use(express.static(staticPath));
+	}
 };

@@ -8,14 +8,14 @@ const errorHandler = require('./errorHandler');
 const isProdEnv = process.env.NODE_ENV === 'production';
 const prodMiddleware = [compression(), helmet()];
 const middleware = [
-  ...(isProdEnv ? prodMiddleware : []),
-  bodyParser.json(),
-  bodyParser.urlencoded({ extended: true }),
-  cors(),
-  morgan('dev'),
+	...(isProdEnv ? prodMiddleware : []),
+	bodyParser.json(),
+	bodyParser.urlencoded({ extended: true }),
+	cors(),
+	morgan('dev'),
 ];
 
 module.exports = {
-  middleware,
-  errorHandler,
+	middleware,
+	errorHandler,
 };
