@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 module.exports = {
 	extends: 'airbnb',
 	parserOptions: {
@@ -6,6 +5,8 @@ module.exports = {
 		sourceType: 'script',
 	},
 	rules: {
+		'linebreak-style': 0,
+		'import/extensions': 0,
 		'jsx-a11y/href-no-hash': 'off',
 		'jsx-a11y/anchor-is-valid': ['warn', { aspects: ['invalidHref'] }],
 		semi: 2,
