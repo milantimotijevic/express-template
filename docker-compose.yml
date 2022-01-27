@@ -18,10 +18,9 @@ services:
      - 3000:3000
     volumes:
       - ./src/:/app/src
-      - nodemodules:/app/node_modules
+      #- ./node_modules:/app/node_modules
     depends_on:
       - redis_local_dev        
 
 volumes:
-  redis_volume:  
-  nodemodules: {}
+  redis_volume:
