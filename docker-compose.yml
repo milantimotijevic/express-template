@@ -17,9 +17,9 @@ services:
     ports:
      - 3000:3000
     volumes:
-      - ./:/usr/src/app
+      - ./:/app/
     depends_on:
       - redis_local_dev        
 
 volumes:
-  redis_volume:    
+  redis_volume:   

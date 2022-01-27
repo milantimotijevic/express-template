@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "Express template",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon -L src/index.js",
     "start": "node src/index.js",
     "test": "jest",
     "lint": "npx eslint -- ./src/.",
