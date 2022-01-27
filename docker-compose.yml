@@ -17,9 +17,11 @@ services:
     ports:
      - 3000:3000
     volumes:
-      - ./:/app/
+      - ./src/:/app/src
+      - nodemodules:/app/node_modules
     depends_on:
       - redis_local_dev        
 
 volumes:
-  redis_volume:   
+  redis_volume:  
+  nodemodules: {}
