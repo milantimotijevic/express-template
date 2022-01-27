@@ -44,7 +44,6 @@ module.exports = class ReservationController extends BaseController {
 	async getAllReservations(req, res, next) {
 		try {
 			const result = await ReservationService.getAllReservations();
-			next();
 			return res.json(result);
 		} catch (error) {
 			console.log(error);
@@ -56,7 +55,6 @@ module.exports = class ReservationController extends BaseController {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.getOneReservation(id);
-			next();
 			return res.json(result);
 		} catch (error) {
 			console.log(error);
@@ -67,7 +65,6 @@ module.exports = class ReservationController extends BaseController {
 	async createReservation(req, res, next) {
 		try {
 			const result = await ReservationService.createReservation(req.body);
-			next();
 			return res.json(result);
 		} catch (error) {
 			console.log(error);
@@ -79,7 +76,6 @@ module.exports = class ReservationController extends BaseController {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.updateReservation(id, req.body);
-			next();
 			return res.json(result);
 		} catch (error) {
 			console.log(error);
@@ -91,7 +87,6 @@ module.exports = class ReservationController extends BaseController {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.deleteReservation(id);
-			next();
 			return res.json(result);
 		} catch (error) {
 			console.log(error);

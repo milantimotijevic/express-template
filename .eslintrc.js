@@ -5,6 +5,7 @@ module.exports = {
 		sourceType: 'script',
 	},
 	rules: {
+		'no-trailing-spaces': 0,
 		'linebreak-style': 0,
 		'import/extensions': 0,
 		'jsx-a11y/href-no-hash': 'off',

@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 const { createValidator } = require('express-joi-validation');
 const BaseController = require('./BaseController');
 const { HealthCheckService } = require('../../service');
@@ -20,7 +21,6 @@ module.exports = class HealthcheckController extends BaseController {
 	async getHealthcheck(req, res, next) {
 		try {
 			const healthcheck = await HealthCheckService.getHealthCheck();
-			next();
 			return res.json(healthcheck);
 		} catch (error) {
 			console.log(error);

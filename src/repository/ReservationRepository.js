@@ -4,24 +4,27 @@ const Redis = require('ioredis');
 
 const { REDIS_URL } = process.env;
 
-// the second 's' stands for 'initiate TLS mode'
-// const client = new Redis(`rediss://${REDIS_URL}`);
+let client;
 
-const nodes = [{
-	host: REDIS_URL,
-	port: '6379',
-}];
+if (REDIS_URL) {
+	const nodes = [{
+		host: REDIS_URL,
+		port: '6379',
+	}];
 
-const options = {
-	redisOptions: {
-		tls: {
-			checkServerIdentity: (/* servername, cert */) => undefined
-			,
+	const options = {
+		redisOptions: {
+			tls: {
+				checkServerIdentity: (/* servername, cert */) => undefined
+				,
+			},
 		},
-	},
-};
+	};
 
-const client = new Redis.Cluster(nodes, options);
+	client = new Redis.Cluster(nodes, options);
+} else {
+	client = new Redis(6379, 'redis_local_dev');
+}
 
 const getOneReservation = function (id) {
 	return client.hget('reservations', id);

@@ -1,0 +1,25 @@
+version: "2"
+services:
+      
+  redis_local_dev:
+    image: redis
+    ports:
+     - 6379:6379
+    volumes:
+      - redis_volume:/var/lib/redis
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+     - REDIS_REPLICATION_MODE=master
+
+  #express-template:
+    #build: .
+    #command: npm run dev
+    #ports:
+     #- 3000:3000
+    #volumes:
+      #- ./:/usr/src/app
+    #depends_on:
+      #- redis_local_dev        
+
+volumes:
+  redis_volume:    
