@@ -26,23 +26,23 @@ if (REDIS_URL) {
 	client = new Redis(6379, 'redis_local_dev');
 }
 
-const getOneReservation = function (id) {
+const getOneReservation = function getOneReservation(id) {
 	return client.hget('reservations', id);
 };
 
-const getAllReservations = function () {
+const getAllReservations = function getAllReservations() {
 	return client.hgetall('reservations');
 };
 
-const createReservation = function (reservationParam) {
+const createReservation = function createReservation(reservationParam) {
 	return client.hset('reservations', uuid.v4(), JSON.stringify(reservationParam));
 };
 
-const updateReservation = async function (id, reservation) {
+const updateReservation = async function updateReservation(id, reservation) {
 	return client.hset('reservations', id, JSON.stringify(reservation));
 };
 
-const deleteReservation = function (id) {
+const deleteReservation = function deleteReservation(id) {
 	return client.hdel('reservations', id);
 };
 

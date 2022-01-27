@@ -1,4 +1,4 @@
-const getHealthCheck = async function () {
+const getHealthCheck = async function getHealthCheck() {
 	return {
 		server: 'up',
 	};
