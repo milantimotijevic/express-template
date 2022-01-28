@@ -5,21 +5,21 @@ const { ReservationRepository } = require('../repository');
 
 const getAllReservations = async (hotelName) => {
 	const ids = await ReservationRepository.getIdsByHotelName(hotelName);
-	if (ids.length < 1) {
+	if (hotelName && ids.length < 1) {
 		throw new Boom.notFound('Hotel name not registered');
 	}
 	return ReservationRepository.getReservationsByIds(ids);
 };
 
-const getReservationsByIds = async (ids) => {
-	const result = await ReservationRepository.getReservationsByIds(ids);
-	return JSON.parse(result);
-};
+const getReservationsByIds = async (ids) => ReservationRepository.getReservationsByIds(ids);
 
 const createReservation = async (reservation) => {
 	const id = uuid.v4();
 	
-	const createResult = await ReservationRepository.createReservation(id, reservation);
+	const createResult = await ReservationRepository.createReservation(id, {
+		id,
+		...reservation,
+	});
 	if (createResult < 1) {
 		throw new Boom.badData('Error creating reservation');
 	}

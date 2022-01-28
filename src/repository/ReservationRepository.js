@@ -1,13 +1,17 @@
 const { client } = require('./connection');
 
 const getReservationsByIds = async function getReservationsByIds(ids) {
-	let result;
+	let result = [];
 	if (ids.length < 1) {
-		result = await client.hgetall('reservations');
+		const objResult = await client.hgetall('reservations');
+		const keys = Object.keys(objResult);
+		keys.forEach((key) => {
+			result.push(JSON.parse(objResult[key]));
+		});
 	} else {
 		result = await client.hmget('reservations', ids);
+		result = result.map((item) => JSON.parse(item));
 	}
-	// TODO parse result to JSON
 	
 	return result;
 };
