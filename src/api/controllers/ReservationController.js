@@ -12,6 +12,7 @@ module.exports = class ReservationController extends BaseController {
 	initRoutes(validations) {
 		this.router.get(
 			'/v1/reservation',
+			validator.query(validations.reservationHotelNameParam),
 			this.getAllReservationsV1,
 		);
 
@@ -33,17 +34,12 @@ module.exports = class ReservationController extends BaseController {
 			validator.body(validations.updateReservationSchema),
 			this.updateReservationV1,
 		);
-
-		this.router.delete(
-			'/v1/reservation/:id',
-			validator.params(validations.reservationIdParam),
-			this.deleteReservationV1,
-		);
 	}
 
 	async getAllReservationsV1(req, res, next) {
 		try {
-			const result = await ReservationService.getAllReservations();
+			const { hotelName } = req.query;
+			const result = await ReservationService.getAllReservations(hotelName);
 			next();
 			return res.json(result);
 		} catch (error) {
@@ -55,7 +51,7 @@ module.exports = class ReservationController extends BaseController {
 	async getOneReservationV1(req, res, next) {
 		try {
 			const { id } = req.params;
-			const result = await ReservationService.getOneReservation(id);
+			const result = await ReservationService.getReservationsByIds([id]);
 			next();
 			return res.json(result);
 		} catch (error) {
@@ -79,18 +75,6 @@ module.exports = class ReservationController extends BaseController {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.updateReservation(id, req.body);
-			next();
-			return res.json(result);
-		} catch (error) {
-			console.log(error);
-			return next(error);
-		}
-	}
-
-	async deleteReservationV1(req, res, next) {
-		try {
-			const { id } = req.params;
-			const result = await ReservationService.deleteReservation(id);
 			next();
 			return res.json(result);
 		} catch (error) {

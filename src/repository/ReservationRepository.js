@@ -1,16 +1,27 @@
-const uuid = require('uuid');
 const { client } = require('./connection');
 
-const getOneReservation = function getOneReservation(id) {
-	return client.hget('reservations', id);
+const getReservationsByIds = async function getReservationsByIds(ids) {
+	let result;
+	if (ids.length < 1) {
+		result = await client.hgetall('reservations');
+	} else {
+		result = await client.hmget('reservations', ids);
+	}
+	// TODO parse result to JSON
+	
+	return result;
 };
 
-const getAllReservations = function getAllReservations() {
-	return client.hgetall('reservations');
+const getIdsByHotelName = function getIdsByHotelName(hotelName) {
+	return client.smembers(`hotel:${hotelName}`);
 };
 
-const createReservation = function createReservation(reservationParam) {
-	return client.hset('reservations', uuid.v4(), JSON.stringify(reservationParam));
+const addIdByHotelName = function addIdByHotelName(hotelName, reservationId) {
+	return client.sadd(`hotel:${hotelName}`, reservationId);
+};
+
+const createReservation = function createReservation(id, reservationParam) {
+	return client.hset('reservations', id, JSON.stringify(reservationParam));
 };
 
 const updateReservation = async function updateReservation(id, reservation) {
@@ -22,8 +33,9 @@ const deleteReservation = function deleteReservation(id) {
 };
 
 module.exports = {
-	getOneReservation,
-	getAllReservations,
+	getReservationsByIds,
+	getIdsByHotelName,
+	addIdByHotelName,
 	createReservation,
 	updateReservation,
 	deleteReservation,
