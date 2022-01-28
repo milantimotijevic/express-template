@@ -25,4 +25,18 @@ describe('Healthcheck API tests', () => {
 
 		expect(response.body).toMatchObject(healthcheck);
 	});
+	it('should return healthcheck if optional healthcheck id is a number', async () => {
+		const healthcheck = { server: 'up' };
+		getHealthCheck.mockResolvedValue(healthcheck);
+	
+		const response = await request.get('/health?id=2');
+	
+		expect(response.body).toMatchObject(healthcheck);
+	});
+	
+	it('should throw an error if optional healthcheck id is not a number', async () => {
+		const response = await request.get('/health?id=test');
+	
+		expect(response.status).toEqual(400);
+	});
 });

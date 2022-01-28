@@ -11,37 +11,37 @@ module.exports = class ReservationController extends BaseController {
 
 	initRoutes(validations) {
 		this.router.get(
-			'/reservation',
-			this.getAllReservations,
+			'/v1/reservation',
+			this.getAllReservationsV1,
 		);
 
 		this.router.get(
-			'/reservation/:id',
+			'/v1/reservation/:id',
 			validator.params(validations.reservationIdParam),
-			this.getOneReservation,
+			this.getOneReservationV1,
 		);
 
 		this.router.post(
-			'/reservation',
+			'/v1/reservation',
 			validator.body(validations.createReservationSchema),
-			this.createReservation,
+			this.createReservationV1,
 		);
 
 		this.router.put(
-			'/reservation/:id',
+			'/v1/reservation/:id',
 			validator.params(validations.reservationIdParam),
 			validator.body(validations.updateReservationSchema),
-			this.updateReservation,
+			this.updateReservationV1,
 		);
 
 		this.router.delete(
-			'/reservation/:id',
+			'/v1/reservation/:id',
 			validator.params(validations.reservationIdParam),
-			this.deleteReservation,
+			this.deleteReservationV1,
 		);
 	}
 
-	async getAllReservations(req, res, next) {
+	async getAllReservationsV1(req, res, next) {
 		try {
 			const result = await ReservationService.getAllReservations();
 			next();
@@ -52,7 +52,7 @@ module.exports = class ReservationController extends BaseController {
 		}
 	}
 
-	async getOneReservation(req, res, next) {
+	async getOneReservationV1(req, res, next) {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.getOneReservation(id);
@@ -64,7 +64,7 @@ module.exports = class ReservationController extends BaseController {
 		}
 	}
 
-	async createReservation(req, res, next) {
+	async createReservationV1(req, res, next) {
 		try {
 			const result = await ReservationService.createReservation(req.body);
 			next();
@@ -75,7 +75,7 @@ module.exports = class ReservationController extends BaseController {
 		}
 	}
 
-	async updateReservation(req, res, next) {
+	async updateReservationV1(req, res, next) {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.updateReservation(id, req.body);
@@ -87,7 +87,7 @@ module.exports = class ReservationController extends BaseController {
 		}
 	}
 
-	async deleteReservation(req, res, next) {
+	async deleteReservationV1(req, res, next) {
 		try {
 			const { id } = req.params;
 			const result = await ReservationService.deleteReservation(id);

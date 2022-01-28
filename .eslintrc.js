@@ -5,6 +5,7 @@ module.exports = {
 		sourceType: 'script',
 	},
 	rules: {
+		'prefer-rest-params': 0,
 		'no-trailing-spaces': 0,
 		'linebreak-style': 0,
 		'import/extensions': 0,
