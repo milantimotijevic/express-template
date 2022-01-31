@@ -13,8 +13,7 @@ if (REDIS_URL) {
 	const options = {
 		redisOptions: {
 			tls: {
-				checkServerIdentity: (/* servername, cert */) => undefined
-				,
+				checkServerIdentity: (/* servername, cert */) => undefined,
 			},
 		},
 	};
